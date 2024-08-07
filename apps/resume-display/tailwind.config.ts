@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gray-circle':
+          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3e%3ccircle fill='%23262626' id='pattern-circle' cx='10' cy='10' r='3'%3e%3c/circle%3e%3c/svg%3e\")",
+        'blue-circle':
+          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3e%3ccircle fill='%236366f1' id='pattern-circle' cx='10' cy='10' r='3'%3e%3c/circle%3e%3c/svg%3e\")",
       },
     },
   },

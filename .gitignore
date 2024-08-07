@@ -10,6 +10,8 @@ lerna-debug.log*
 **/.next/
 **/certificates/
 
+**/certificates/
+
 node_modules
 .DS_Store
 dist

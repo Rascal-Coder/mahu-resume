@@ -9,6 +9,7 @@
     "start": "next start -p 3001",
     "lint": "eslint ./src --fix --ext .ts,.tsx,.js,.jsx --max-warnings 0"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "react-confetti": "^6.1.0"
+  }
 }
