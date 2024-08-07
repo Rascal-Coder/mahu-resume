@@ -1,0 +1,61 @@
+{
+  "name": "mahu-resume",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint apps --fix --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "dev": "npm-run-all --parallel dev:display dev:editor",
+    "dev:l": "npm-run-all --parallel dev:display-l dev:editor-l",
+    "dev:display": "cd ./apps/resume-display && pnpm dev",
+    "dev:display-l": "cd ./apps/resume-display && pnpm dev:l",
+    "dev:editor": "cd ./apps/resume-editor && pnpm dev",
+    "dev:editor-l": "cd ./apps/resume-editor && pnpm dev:l",
+    "build": "npm-run-all --parallel build:display build:editor",
+    "build:display": "cd apps/resume-display && npm run build",
+    "build:editor": "cd apps/resume-editor && npm run build",
+    "prepare": "husky install",
+    "commit": "git-cz",
+    "lint-staged": "lint-staged",
+    "commitlint": "commitlint --config .commitlintrc.js -e -V"
+  },
+  "dependencies": {
+    "immer": "^10.1.1",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.77.8",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
+    "@next/bundle-analyzer": "^14.2.5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
+    "cz-git": "^1.9.4",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-rascal": "^0.2.4",
+    "husky": "8.0.3",
+    "lint-staged": "^15.2.8",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8",
+    "simple-git-hooks": "^2.11.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "5.2.2"
+  },
+  "engines": {
+    "node": ">=18 <=20"
+  },
+  "lint-staged": {
+    "*./**/*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "./**/*.{html,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

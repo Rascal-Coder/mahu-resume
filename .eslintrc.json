@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "rascal"],
+  "settings": {
+    "import/resolver": {
+      // "alias": {
+      //   "map": [
+      //     ["@display", "./apps/resume-display/src"],
+      //     ["@editor", "./apps/resume-editor/src"]
+      //   ],
+      //   "extensions": [".js", ".jsx", ".mjs", ".ts", ".tsx", ".d.ts"]
+      // }
+    }
+  },
+  "rules": {
+    "import/no-unresolved":"off"
+  }
+}
