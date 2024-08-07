@@ -25,7 +25,7 @@ const Info = () => {
         priority={true}
         style={{
           height: 'auto',
-          width: '200px'
+          width: '200px',
         }}
         src={
           'https://bkimg.cdn.bcebos.com/pic/78310a55b319ebc4524d54148226cffc1e171601?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,w_437'
