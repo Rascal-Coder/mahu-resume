@@ -8,7 +8,7 @@ const MaskBox = () => {
     const handleMouseMove = (event: MouseEvent) => {
       setMaskPosition({
         x: event.clientX,
-        y: event.clientY
+        y: event.clientY,
       });
     };
 
@@ -21,7 +21,7 @@ const MaskBox = () => {
     };
   }, []);
   const maskImageStyle = {
-    maskImage: `radial-gradient(200px at ${maskPosition.x}px ${maskPosition.y}px, black 0px, transparent 100%)`
+    maskImage: `radial-gradient(200px at ${maskPosition.x}px ${maskPosition.y}px, black 0px, transparent 100%)`,
   };
   return (
     <div className="group-hover:opacity-100 resume-mask-circle opacity-0 transition-all" style={maskImageStyle}></div>
