@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "eslint apps --fix --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "lint-fix": "eslint apps --fix --ext .ts,.tsx,.js,.jsx,json --max-warnings 0",
+    "lint": "eslint apps --ext .ts,.tsx,.js,.jsx,json --max-warnings 0",
     "dev": "npm-run-all --parallel dev:display dev:editor",
     "dev:l": "npm-run-all --parallel dev:display-l dev:editor-l",
     "dev:display": "cd ./apps/resume-display && pnpm dev",
@@ -50,10 +51,10 @@
     "node": ">=18 <=20"
   },
   "lint-staged": {
-    "*./**/*.{ts,tsx}": [
+    "*./**/*.{ts,tsx,js,json}": [
       "eslint --fix"
     ],
-    "./**/*.{html,json,md}": [
+    "./**/*.{html,json,md,css,scss}": [
       "prettier --write",
       "git add"
     ]
