@@ -1,19 +1,20 @@
 'use client';
 
-import useUserStore from '@/store/user';
+import { Button } from '@nextui-org/react';
+
+// import useUserStore from '@/store/user';
 const Info = () => {
-  const { userInfo, token, updateUserInfo, updateAge, updateToken } = useUserStore();
+  // const { userInfo, token, updateUserInfo, updateAge, updateToken } = useUserStore();
 
   return (
-    <div className="App">
-      前台没有照片!!!
-      <div>
-        姓名：{userInfo.name} 年龄：{userInfo.age}
-      </div>
-      <div>token：{token}</div>
-      <button onClick={() => updateUserInfo({ name: 'lisi', age: 24 })}>更新用户</button>
-      <button onClick={() => updateAge(userInfo.age + 1)}>更新���龄</button>
-      <button onClick={() => updateToken('23652')}>更新token</button>
+    <div className="App bg-blue-300 h-screen justify-center items-center flex">
+      <Button
+        disableRipple
+        className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+        size="lg"
+      >
+        Press me
+      </Button>
     </div>
   );
 };
