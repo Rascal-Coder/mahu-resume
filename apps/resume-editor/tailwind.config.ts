@@ -12,10 +12,32 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // backgroundImage: {
-      //   'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      //   'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      // },
+      keyframes: {
+        as: {
+          '0%': { opacity: '0' },
+          '10%': { opacity: '.3' },
+          '20%': { opacity: '.1' },
+          '30%': { opacity: '.5' },
+          '40%': { opacity: '0' },
+          '50%': { opacity: '.8' },
+          '55%': { opacity: '0' },
+        },
+        asd: {
+          '0%': { top: '-20%' },
+          '100%': { top: '100%' },
+        },
+        asdd: {
+          '0%': { textShadow: '0 0 30px rgba(0, 0, 0, .5)' },
+          '33%': { textShadow: '0 0 10px rgba(0, 0, 0, .4)' },
+          '66%': { textShadow: '0 0 20px rgba(0, 0, 0, .2)' },
+          '100%': { textShadow: '0 0 40px rgba(0, 0, 0, .8)' },
+        },
+      },
+      animation: {
+        as: 'as 8s linear infinite',
+        asd: 'asd 12s linear infinite',
+        asdd: 'asdd 2s linear infinite',
+      },
     },
   },
   darkMode: 'class',
