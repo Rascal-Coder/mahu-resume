@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       {/* <PreLoader /> */}
-      <main className="flex mx-auto bg-dot px-8 pb-32 text-gray-900 lg:px-12 bg-black">
+      <main className="flex mx-auto bg-dot px-8 pb-[132px] text-gray-900 lg:px-12 bg-black">
         <Hero />
         <AnimationResume />
       </main>
