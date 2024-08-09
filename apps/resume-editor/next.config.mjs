@@ -7,9 +7,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig = {
   // 关闭严格模式
   reactStrictMode: false,
-  sassOptions: {
-    additionalData: '@import "@/styles/index.scss";',
-  },
   images: {
     remotePatterns: [
       // {
