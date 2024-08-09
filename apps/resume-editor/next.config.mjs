@@ -13,8 +13,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https', // 图片资源的协议
-        hostname: 'bkimg.cdn.bcebos.com', // 图片资源的域名
+        protocol: 'http', // 图片资源的协议
+        hostname: 'ademilter.com', // 图片资源的域名
       },
     ],
   },
