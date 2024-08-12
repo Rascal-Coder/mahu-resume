@@ -21,7 +21,6 @@ export const Hero = () => {
       </div>
       <FlexboxSpacer maxWidth={100} minWidth={50} className="hidden lg:block" />{' '}
       <div className="mt-6 flex justify-center lg:mt-4 lg:block">
-        {' '}
         <AnimationResume />
       </div>
     </section>

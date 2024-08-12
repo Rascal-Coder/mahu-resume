@@ -1,9 +1,10 @@
 import { useEffect, useState, useMemo } from 'react';
 import Frame from 'react-frame-component';
 
-import { Card, CardBody } from '@nextui-org/react';
+// import { Card, CardBody } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
 
+import Card from './Card';
 import {
   A4_HEIGHT_PX,
   A4_WIDTH_PT,
@@ -110,9 +111,9 @@ const ResumeIFrame = ({
           height: `${height}px`,
           transform: `scale(${scale})`,
         }}
-        className={`origin-top-left dark`}
+        className={`origin-top-left `}
       >
-        <CardBody className="p-8">
+        <div className="w-full h-full bg-white">
           <Frame
             initialContent={iframeInitialContent}
             style={{ width: '100%', height: '100%' }}
@@ -120,7 +121,7 @@ const ResumeIFrame = ({
           >
             {children}
           </Frame>
-        </CardBody>
+        </div>
       </Card>
     </div>
   );
