@@ -4,7 +4,7 @@ import gsap from 'gsap';
 
 import Logo from '../svg/Logo';
 
-const PreLoader: React.FC = () => {
+const PreLoader: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
   useEffect(() => {
     const tl = gsap.timeline();
 
@@ -32,7 +32,7 @@ const PreLoader: React.FC = () => {
         })
         .to('body', {
           duration: 0.01,
-          css: { overflowY: 'scroll' },
+          // css: { overflowY: 'scroll' },
           ease: 'power3.inOut',
         })
         .from('.sub', {
@@ -54,6 +54,7 @@ const PreLoader: React.FC = () => {
         .to('.preloader', {
           duration: 0,
           css: { display: 'none' },
+          onComplete: onComplete,
         });
     };
 
@@ -73,14 +74,14 @@ const PreLoader: React.FC = () => {
     return () => {
       tl.kill();
     };
-  }, []); // Empty dependency array to run the animation only on mount
+  }, [onComplete]);
 
   return (
     <div
       className="
       preloader gap-[5px] w-full fixed bottom-0 left-0
       right-0 z-[999] flex justify-center items-center
-    bg-black h-screen overflow-hidden text-[14px]
+    bg-[#000915] h-screen overflow-hidden text-[14px]
       sm:gap-[10px] sm:text-[16px] md:text-[18px] lg:text-[20px]
        "
     >

@@ -1,85 +1,48 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import Frame from 'react-frame-component';
 
-const sections = [
-  {
-    title: 'Contact Information',
-    content: `
-- Email: test@gmail.com
-- Phone: 123-456-7890
-- Location: HYD, IND
-- LinkedIn: linkedin.com/in/yourusername
-    `,
-  },
-  {
-    title: 'Work Experience',
-    content: `
-ABC Company
-- Position: Software Engineer
-- Duration: May 2023 - Present
-- Responsibilities:
-  - Contributed and collaborated with cross-functional teams to build a scalable product consumed by larger audiences (repeated three times).
+import { Card, CardBody } from '@nextui-org/react';
+import dynamic from 'next/dynamic';
 
-DEF Organization
-- Position: Software Engineer
-- Duration: May 2022 - May 2023
-- Responsibilities:
-  - Contributed and collaborated with cross-functional teams to build a scalable product consumed by larger audiences (repeated three times).
+import {
+  A4_HEIGHT_PX,
+  A4_WIDTH_PT,
+  A4_WIDTH_PX,
+  LETTER_HEIGHT_PX,
+  LETTER_WIDTH_PT,
+  LETTER_WIDTH_PX,
+  MOCK_SETIONS,
+} from './constants';
 
-XYZ Company
-- Position: Software Engineer
-- Duration: May 2021 - May 2022
-- Responsibilities:
-  - Contributed and collaborated with cross-functional teams to build a scalable product consumed by larger audiences.
-    `,
-  },
-  {
-    title: 'Education',
-    content: `
-XYZ University
-- Degree: Bachelor of Science in Computer Science
-- GPA: 8.55
-- Duration: Sep 2018 - Aug 2022
-- Additional Info:
-  - Contributed and collaborated with cross-functional teams to build a scalable product consumed by larger audiences.
-    `,
-  },
-  {
-    title: 'Project',
-    content: `
-Project1
-- Duration: Fall 2021
-- Description:
-  - Contributed and collaborated with cross-functional teams to build a scalable product consumed by larger audiences.
-    `,
-  },
-  {
-    title: 'Skills',
-    content: `
-- Programming Languages:
-  - Python
-  - TypeScript
-  - React
-- Technical Skills:
-  - React Hooks, GraphQL, Node.js, SQL, Postgres, NoSql, Redis, REST API, Git
-- Soft Skills:
-  - Teamwork, Creative Problem Solving, Communication, Learning Mindset, Agile
-    `,
-  },
-];
+const getIFrameInitialContent = (isA4: boolean) => {
+  const width = isA4 ? A4_WIDTH_PT : LETTER_WIDTH_PT;
 
-export default function Resume() {
+  return `<!DOCTYPE html>
+    <html>
+        <head>
+            <style>
+            </style>
+        </head>
+        <body style='overlfow: hidden; width: ${width}pt; margin:0;padding:0; -webkit-text-size-adjust:none;'>
+            <div></div>
+        </body>
+    <html>`;
+};
+const Section = ({ title, content }: { title: string; content: string }) => (
+  <div className="mt-4">
+    <h2 className="text-2xl font-semibold">{title}</h2>
+    <pre className="whitespace-pre-wrap mt-2">{content || ''}</pre>
+  </div>
+);
+// TODO: 先mock一个简历模版样式都没有用，后面替换为真实模版pdf展示出来
+const Resume = () => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [content, setContent] = useState('');
-  const contentRef = useRef(content); // Use ref to hold the content state for the animation
-
-  useEffect(() => {
-    contentRef.current = content;
-  }, [content]);
 
   useEffect(() => {
     const animateText = () => {
-      if (currentSectionIndex < sections.length) {
-        const section = sections[currentSectionIndex];
+      if (currentSectionIndex < MOCK_SETIONS.length) {
+        const section = MOCK_SETIONS[currentSectionIndex];
         let index = 0;
         const updateContent = () => {
           if (index < section.content.length) {
@@ -87,40 +50,89 @@ export default function Resume() {
             index += 1;
             requestAnimationFrame(updateContent);
           } else {
-            setTimeout(() => {
-              setContent('');
-              setCurrentSectionIndex((prev) => prev + 1);
-            }, 500);
+            setContent('');
+            setCurrentSectionIndex((prev) => prev + 1);
           }
         };
         updateContent();
       }
     };
-
     animateText();
   }, [currentSectionIndex]);
-
   return (
-    <div className="container mx-auto p-6">
+    <div className="px-6 w-full h-full">
       <div className="bg-white shadow-md rounded-lg p-6">
         <h1 className="text-3xl font-bold text-blue-500">Rascal-Coder</h1>
         <p className="text-lg">Software engineer obsessed with building exceptional products that people love</p>
 
-        {sections.slice(0, currentSectionIndex).map((section, index) => (
+        {MOCK_SETIONS.slice(0, currentSectionIndex).map((section, index) => (
           <Section key={index} title={section.title} content={section.content} />
         ))}
 
-        {currentSectionIndex < sections.length && (
-          <Section title={sections[currentSectionIndex].title} content={content} />
+        {currentSectionIndex < MOCK_SETIONS.length && (
+          <Section title={MOCK_SETIONS[currentSectionIndex].title} content={content} />
         )}
       </div>
     </div>
   );
-}
+};
+const ResumeIFrame = ({
+  documentSize,
+  scale,
+  children,
+  enablePDFViewer,
+}: {
+  documentSize: string;
+  scale: number;
+  children: React.ReactNode;
+  enablePDFViewer?: boolean;
+}) => {
+  const isA4 = documentSize === 'A4';
+  const iframeInitialContent = useMemo(() => getIFrameInitialContent(isA4), [isA4]);
 
-const Section = ({ title, content }: { title: string; content: string }) => (
-  <div className="mt-4">
-    <h2 className="text-2xl font-semibold">{title}</h2>
-    <pre className="whitespace-pre-wrap mt-2">{content || ''}</pre>
-  </div>
-);
+  if (enablePDFViewer) {
+    return <></>;
+  }
+
+  const width = isA4 ? A4_WIDTH_PX : LETTER_WIDTH_PX;
+  const height = isA4 ? A4_HEIGHT_PX : LETTER_HEIGHT_PX;
+
+  return (
+    <div
+      style={{
+        maxWidth: `${width * scale}px`,
+        maxHeight: `${height * scale}px`,
+      }}
+    >
+      <Card
+        style={{
+          width: `${width}px`,
+          height: `${height}px`,
+          transform: `scale(${scale})`,
+        }}
+        className={`origin-top-left dark`}
+      >
+        <CardBody className="p-8">
+          <Frame
+            initialContent={iframeInitialContent}
+            style={{ width: '100%', height: '100%' }}
+            key={isA4 ? 'A4' : 'LETTER'}
+          >
+            {children}
+          </Frame>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
+const ResumeIFrameCSR = dynamic(() => Promise.resolve(ResumeIFrame), {
+  ssr: false,
+});
+const AnimationResume = () => {
+  return (
+    <ResumeIFrameCSR documentSize="A4" scale={0.8} enablePDFViewer={false}>
+      <Resume />
+    </ResumeIFrameCSR>
+  );
+};
+export default AnimationResume;
