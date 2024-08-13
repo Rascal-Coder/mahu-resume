@@ -1,0 +1,49 @@
+.rascal-tag{
+  position: relative;
+  cursor: pointer;
+  background: #006fee;
+  color: #FFF;
+  padding: 5px 10px;
+  margin:2px 2px 2px 20px;
+  white-space: nowrap;
+}
+
+.rascal-tag:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  background: inherit;
+  height: 34px;
+  border: 10px solid #e5e7eb;
+  border-right-color: transparent;
+  border-radius:10px 0 0 10px;
+  left: -20px;
+  top: 0;
+}
+
+.rascal-tag:after{
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background: #FFF;
+  position: absolute;
+  left: -3px;
+  top: 12px;
+  box-shadow:inset 1px 1px 0 #CCC;
+}
+
+.rascal-tag .close{
+  position: absolute;
+  background: inherit;
+  left: -4px;
+  z-index: 3;
+  visibility: hidden;
+}
+
+.rascal-tag:hover .close{
+  visibility: visible;
+}
+.rascal-tag:hover{
+  box-shadow:1px 1px 0 rgba(0,0,0,.2);
+}

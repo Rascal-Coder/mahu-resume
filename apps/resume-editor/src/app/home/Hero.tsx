@@ -1,10 +1,12 @@
 import { Button } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
 
 import { FlexboxSpacer } from '@/components/FlexboxSpacer';
 
 import AnimationResume from './AnimationResume';
 
 export const Hero = () => {
+  const router = useRouter();
   return (
     <section className="lg:flex lg:justify-center">
       <FlexboxSpacer maxWidth={75} minWidth={0} className="hidden lg:block" />
@@ -15,7 +17,14 @@ export const Hero = () => {
           resume easily
         </h1>
         <p className="mt-3 text-lg lg:mt-5 lg:text-xl text-blue-200">With this powerful resume builder</p>
-        <Button disableRipple className="mt-3 resume-btn-hover bg-primary" size="lg">
+        <Button
+          disableRipple
+          onClick={() => {
+            router.push('/templates');
+          }}
+          className="mt-3 resume-btn-hover bg-primary"
+          size="lg"
+        >
           Create Resume
         </Button>
       </div>

@@ -17,12 +17,15 @@ export default function Home() {
     }
   }, [isLoading]);
   return (
-    <main className="bg-[#000915] min-h-screen">
+    // <main className="bg-[#000915] min-h-screen">
+
+    // </main>
+    <>
       {isLoading && <PreLoader onComplete={() => setIsLoading(false)} />}
-      <main className="max-w-screen-2xl mx-auto  bg-dot px-8 pb-6 text-gray-900 lg:px-12">
+      <main className="max-w-screen-2xl py-8 mx-auto  bg-dot px-8 text-gray-900 lg:px-12">
         <Hero />
         <Steps />
       </main>
-    </main>
+    </>
   );
 }
