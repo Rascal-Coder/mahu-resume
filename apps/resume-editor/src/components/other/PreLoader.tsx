@@ -4,7 +4,7 @@ import gsap from 'gsap';
 
 import Logo from '../svg/Logo';
 
-const PreLoader: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
+const PreLoader = () => {
   useEffect(() => {
     const tl = gsap.timeline();
 
@@ -32,7 +32,6 @@ const PreLoader: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
         })
         .to('body', {
           duration: 0.01,
-          // css: { overflowY: 'scroll' },
           ease: 'power3.inOut',
         })
         .from('.sub', {
@@ -54,7 +53,6 @@ const PreLoader: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
         .to('.preloader', {
           duration: 0,
           css: { display: 'none' },
-          onComplete: onComplete,
         });
     };
 
@@ -74,7 +72,7 @@ const PreLoader: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
     return () => {
       tl.kill();
     };
-  }, [onComplete]);
+  }, []);
 
   return (
     <div

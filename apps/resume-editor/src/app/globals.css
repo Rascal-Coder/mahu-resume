@@ -12,7 +12,7 @@
   .bg-primary {
     @apply bg-gradient-to-r from-[color:var(--theme-purple)] to-[color:var(--theme-blue)] text-white !important;
   }
- .outline-theme-purple {
+  .outline-theme-purple {
     @apply hover:opacity-80 hover:outline-[color:var(--theme-purple)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--theme-purple)];
   }
 }
@@ -22,6 +22,29 @@
   --theme-blue: #4fc5eb;
 }
 /* hover:text-black  hover:bg-background/30 */
-.resume-btn-hover{
-  @apply relative overflow-visible rounded-full  hover:-translate-y-1 px-12 shadow-xl  after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 !important
+.resume-btn-hover {
+  @apply relative overflow-visible rounded-full  hover:-translate-y-1 px-12 shadow-xl  after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 !important;
+}
+/* 设置滚动条整体样式 */
+::-webkit-scrollbar {
+  width: 6px; /* 滚动条宽度 */
+  height: 6px; /* 滚动条高度 */
+}
+
+/* 设置滚动条轨道的样式为黑色 */
+::-webkit-scrollbar-track {
+  background: #000915; /* 设置滚动条轨道背景为黑色 */
+  /* border-radius: 10px; */
+}
+
+/* 设置滚动条滑块的样式 */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* 设置滑块颜色为半透明白色 */
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 滑块在鼠标悬停时的样式 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* 鼠标悬停时滑块变得更不透明 */
 }
