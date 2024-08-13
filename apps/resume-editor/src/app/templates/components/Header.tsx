@@ -75,7 +75,15 @@ export default function App() {
           </Dropdown>
         ) : (
           <NavbarItem className="hidden lg:flex">
-            <Button as={Link} color="primary" href="#" variant="ghost">
+            <Button
+              onClick={() => {
+                router.push('/login');
+              }}
+              as={Link}
+              color="primary"
+              href="#"
+              variant="ghost"
+            >
               Login
             </Button>
           </NavbarItem>

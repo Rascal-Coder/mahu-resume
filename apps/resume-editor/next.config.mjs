@@ -15,6 +15,11 @@ const nextConfig = {
       // },
     ],
   },
+  modularizeImports: {
+    '@mui/icons-material': {
+      transform: '@mui/icons-material/{{member}}',
+    },
+  },
   // basePath: process.env.NODE_ENV === 'production' ? '/editor' : ''
   // webpack: config => {
   //   config.resolve.alias['@'] = path.resolve(__dirname, 'src');
