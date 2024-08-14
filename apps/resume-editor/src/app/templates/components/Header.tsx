@@ -1,6 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
+import { useAuth, useUser } from '@clerk/nextjs';
 import {
   Navbar,
   NavbarBrand,
@@ -22,8 +23,18 @@ import Logo from '@/components/svg/Logo';
 import SearchIcon from './SearchIcon';
 export default function App() {
   const router = useRouter();
-  const [isLogined] = useState(false);
-  // TODO: Add Login and Logout
+  const { isSignedIn, signOut } = useAuth();
+  const { user } = useUser();
+
+  const handleLogin = () => {
+    router.push('/sign-in');
+  };
+
+  const handleLogout = () => {
+    signOut({
+      redirectUrl: '/templates',
+    });
+  };
   return (
     <Navbar isBordered className="dark">
       <NavbarContent justify="start">
@@ -52,7 +63,7 @@ export default function App() {
           startContent={<SearchIcon size={18} />}
           type="search"
         />
-        {isLogined ? (
+        {isSignedIn ? (
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
@@ -60,22 +71,22 @@ export default function App() {
                 as="button"
                 className="transition-transform"
                 color="default"
-                name="Jason Hughes"
+                name={user?.username ?? 'User'}
                 size="sm"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                src={user?.imageUrl ?? 'https://i.pravatar.cc/150?u=a042581f4e29026704d'}
               />
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="account">My Account</DropdownItem>
+              {/* <DropdownItem key="account">My Account</DropdownItem> */}
               <DropdownItem key="add_newtemplate">Add New Template</DropdownItem>
-              <DropdownItem key="logout" color="danger">
+              <DropdownItem onClick={handleLogout} key="logout" color="danger">
                 Log Out
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         ) : (
           <NavbarItem>
-            <Button as={Link} color="primary" href="/login" variant="ghost">
+            <Button onClick={handleLogin} as={Link} color="primary" variant="ghost">
               Login
             </Button>
           </NavbarItem>

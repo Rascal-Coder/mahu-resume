@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 
 import NextTopLoader from '@/components/NextTopLoader';
@@ -21,13 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}  bg-[#000915] `}>
-        <Providers>
-          <NextTopLoader color="#006fee" showSpinner={false}></NextTopLoader>
-          {children}
-        </Providers>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${inter.className}  bg-[#000915] `}>
+          <Providers>
+            <NextTopLoader color="#006fee" showSpinner={false}></NextTopLoader>
+            {children}
+          </Providers>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
