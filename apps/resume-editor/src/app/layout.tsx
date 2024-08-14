@@ -1,8 +1,11 @@
 import { Inter } from 'next/font/google';
 
+import NextTopLoader from '@/components/NextTopLoader';
+
 import { Providers } from './providers';
 
 import type { Metadata } from 'next';
+
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}  bg-[#000915] `}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <NextTopLoader color="#006fee" showSpinner={false}></NextTopLoader>
+          {children}
+        </Providers>
       </body>
     </html>
   );

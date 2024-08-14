@@ -59,9 +59,9 @@ const BackgroundBeams = () => {
   ];
 
   return (
-    <div className="absolute pointer-events-none h-full w-full inset-0  [mask-size:40px] [mask-repeat:no-repeat]  flex items-center justify-center">
+    <div className="absolute pointer-events-none z-1 h-full w-full inset-0  [mask-size:40px] [mask-repeat:no-repeat]  flex items-center justify-center">
       <svg
-        className="absolute z-0 w-full h-full pointer-events-none ]"
+        className="absolute z-0 w-full h-full pointer-events-none"
         fill="none"
         height="100%"
         viewBox="0 0 696 316"
