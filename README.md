@@ -1,2 +1,4 @@
-### 防止Vscode爆红，Delete `␍`eslint(prettier/prettier)错误
-- git config --global core.autocrlf false
+### TodoList
+- [x] 默认模版和自定义上传模版 🥂
+- [x] ai生成简历内容 😀
+- [x] ai优化简历内容 😍
