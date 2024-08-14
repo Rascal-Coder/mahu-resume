@@ -85,8 +85,6 @@ const NextTopLoader = ({
     };
 
     history.replaceState = function (...args) {
-      console.log('replaceState');
-
       handleRouteChangeStart();
       originalReplaceState.apply(this, args);
       handleRouteChangeComplete();
@@ -114,7 +112,7 @@ const NextTopLoader = ({
       window.removeEventListener('popstate', handleRouteChangeComplete);
       document.removeEventListener('click', handleClick);
     };
-  }, []);
+  }, [crawl, crawlSpeed, easing, initialPosition, showSpinner, speed, template]);
 
   return styles;
 };
