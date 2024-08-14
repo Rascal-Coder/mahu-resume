@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "PNPM_VERSION": "8.0.0"
+    }
+  },
+  "install": {
+    "cmd": "pnpm install"
+  }
+}
