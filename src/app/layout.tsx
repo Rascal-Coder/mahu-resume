@@ -1,8 +1,11 @@
+import { ToastContainer } from 'react-toastify';
+
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 
 import NextTopLoader from '@/components/NextTopLoader';
 
+import 'react-toastify/dist/ReactToastify.css';
 import { Providers } from './providers';
 
 import type { Metadata } from 'next';
@@ -25,6 +28,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.className}  bg-[#000915] `}>
+          <ToastContainer theme="dark"></ToastContainer>
           <Providers>
             <NextTopLoader color="#006fee" showSpinner={false}></NextTopLoader>
             {children}
